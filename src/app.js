@@ -1,8 +1,29 @@
 import express from 'express';
 import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import router from './routes/index.js';
 
+dotenv.config();
+
 const app = express();
+
+// Database connection for serverless
+const connectDB = async () => {
+  if (mongoose.connections[0].readyState) return;
+  try {
+    await mongoose.connect(process.env.DATABASE_URL);
+    console.log('Connected to MongoDB');
+  } catch (error) {
+    console.error('MongoDB connection error:', error);
+  }
+};
+
+// Middleware to ensure DB connection
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
 
 // Parsers
 app.use(express.json());
