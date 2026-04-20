@@ -1,5 +1,6 @@
 import { UserService } from './user.service.js';
 
+// Register user controller
 const registerUser = async (req, res) => {
   try {
     const result = await UserService.createUserInDB(req.body);
@@ -18,6 +19,7 @@ const registerUser = async (req, res) => {
   }
 };
 
+// Login user controller
 const loginUser = async (req, res) => {
   try {
     const { user, token } = await UserService.loginUserFromDB(req.body);
@@ -36,6 +38,7 @@ const loginUser = async (req, res) => {
   }
 };
 
+// Get all users controller
 const getAllUsers = async (req, res) => {
   try {
     const result = await UserService.getAllUsersFromDB();

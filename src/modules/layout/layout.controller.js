@@ -1,5 +1,6 @@
 import { LayoutService } from './layout.service.js';
 
+// Save layout controller
 const saveLayout = async (req, res) => {
   try {
     const result = await LayoutService.saveLayoutInDB(req.user.userId, req.body);
@@ -18,6 +19,7 @@ const saveLayout = async (req, res) => {
   }
 };
 
+// Get layouts controller
 const getLayouts = async (req, res) => {
   try {
     const result = await LayoutService.getLayoutsFromDB(req.user.userId);

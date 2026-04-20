@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { User } from './user.model.js';
 
+// Register user service
 const createUserInDB = async (payload) => {
   const hashedPassword = await bcrypt.hash(payload.password, 10);
   const user = await User.create({
@@ -14,6 +15,7 @@ const createUserInDB = async (payload) => {
   return result;
 };
 
+// Login user service
 const loginUserFromDB = async (payload) => {
   const { email, password } = payload;
   const user = await User.findOne({ email }).select('+password');
