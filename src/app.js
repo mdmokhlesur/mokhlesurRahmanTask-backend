@@ -1,3 +1,4 @@
+// Main application entry point
 import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
@@ -9,6 +10,7 @@ dotenv.config();
 const app = express();
 
 // Database connection for serverless
+// Database connection helper
 const connectDB = async () => {
   if (mongoose.connections[0].readyState) return;
   try {
@@ -20,6 +22,7 @@ const connectDB = async () => {
 };
 
 // Middleware to ensure DB connection
+// Database connection middleware
 app.use(async (req, res, next) => {
   await connectDB();
   next();
@@ -45,6 +48,7 @@ app.use((req, res, next) => {
 });
 
 // Global error handler (basic)
+// Global error handling middleware
 app.use((err, req, res, next) => {
   console.error('Error occurred:', err);
   const statusCode = 500;
