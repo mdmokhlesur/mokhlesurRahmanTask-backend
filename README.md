@@ -16,9 +16,11 @@ This is the backend API for the Recursive Screen Splitter application, built wit
    ```
 
 2. **Environment Variables**:
-   Copy `.env.example` to `.env` and fill in your MongoDB credentials:
+   Copy `.env` and fill in your MongoDB credentials:
    ```bash
-   cp .env.example .env
+   DATABASE_URL=mongodb+srv://mokhlesurinfo5_db_user:J3U3rAGa0Vn0XeAz@coder71.zaxyclf.mongodb.net/
+   JWT_SECRET=your_super_secret_key_here
+   PORT=5000
    ```
    Required variables:
    - `DATABASE_URL`: Your MongoDB connection string.
