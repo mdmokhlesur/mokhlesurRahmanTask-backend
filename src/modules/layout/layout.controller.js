@@ -1,8 +1,19 @@
 import { LayoutService } from './layout.service.js';
+import { validateLayoutTree } from './layout.validation.js';
 
 // Save layout controller
 const saveLayout = async (req, res) => {
   try {
+    // Validate the tree structure recursively before saving
+    const validationError = validateLayoutTree(req.body.structure);
+    if (validationError) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid layout structure',
+        error: validationError,
+      });
+    }
+
     const result = await LayoutService.saveLayoutInDB(req.user.userId, req.body);
     res.status(200).json({
       success: true,

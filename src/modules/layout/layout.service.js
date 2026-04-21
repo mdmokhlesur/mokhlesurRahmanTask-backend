@@ -5,7 +5,7 @@ const saveLayoutInDB = async (userId, payload) => {
   const result = await Layout.findOneAndUpdate(
     { user: userId },
     { ...payload, user: userId },
-    { upsert: true, new: true }
+    { upsert: true, returnDocument: 'after' }
   );
   return result;
 };
