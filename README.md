@@ -7,7 +7,6 @@ This is the backend API for the Recursive Screen Splitter application, built wit
 - **MongoDB & Mongoose**: Database and ODM
 - **JWT**: For secure user authentication
 - **Bcryptjs**: Password hashing
-- **Express Rate Limit**: API protection
 
 ## ⚙️ Setup Instructions
 
@@ -48,5 +47,4 @@ This is the backend API for the Recursive Screen Splitter application, built wit
 
 ## 🛡️ Security Features
 - **JWT Authentication**: All layout operations are protected.
-- **Rate Limiting**: Prevents abuse on authentication and data endpoints.
 - **CORS Configuration**: Restricted to allowed origins.
